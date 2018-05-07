@@ -1,0 +1,26 @@
+{
+  "name": "base-conv",
+  "version": "1.0.0",
+  "description": "Convert arbitrarily big numbers from any radix representation to any other",
+  "main": "index.cjs.js",
+  "module": "index.js",
+  "scripts": {
+    "test": "rollup test.js -f cjs | node"
+  },
+  "repository": "https://github.com/caub/base-conv.git",
+  "keywords": [
+    "number",
+    "radix",
+    "base",
+    "convert"
+  ],
+  "author": "caub",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caub/base-conv/issues"
+  },
+  "homepage": "https://github.com/caub/base-conv#readme",
+  "devDependencies": {
+    "rollup": "^0.58.2"
+  }
+}
