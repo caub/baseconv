@@ -1,7 +1,7 @@
 export default {
-  input: 'index.js',
+  input: 'index.mjs',
   output: {
     format: 'cjs',
-    file: 'index.cjs.js'
+    file: 'index.js'
   }
 }

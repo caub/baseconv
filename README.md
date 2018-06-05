@@ -2,6 +2,7 @@
 
 [![npm version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
+[![coverage status][codecov-image]][codecov-url]
 
 - default charset is `'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'` (base62)
 - you can change it with `conv.setCharset`
@@ -12,9 +13,12 @@ usage:
 const conv = require('base-conv')
 console.log(conv(42, 10, 16)) // '2a'
 console.log(conv('42', 10, 16)) // '2a'
+console.log(conv('42'.repeat(100), 10, 16)) // '8DE2991DF40FF7830578100...'
 ```
 
 [npm-image]: https://img.shields.io/npm/v/base-conv.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/base-conv
 [travis-image]: https://img.shields.io/travis/caub/base-conv.svg?style=flat-square
 [travis-url]: https://travis-ci.org/caub/base-conv
+[codecov-image]: https://img.shields.io/codecov/c/github/caub/base-conv.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/caub/base-conv
