@@ -11,12 +11,27 @@ console.assert(conv(conv('999', 10, 36), 36, 10) == '999');
 console.assert(conv('999', 10, 62) == 'g7');
 console.assert(conv('g7', 62, 10) == '999');
 
+console.log('-- throw if dest base > CHARSET.length');
 try {
   conv('999', 10, 64);
+  console.assert(false)
 }
 catch (e) {
   console.assert(e.message.includes('radix'));
 }
+
+console.log('-- throw if an input char is out of src base');
+try {
+  const x = conv('9a99', 10);
+  console.assert(false)
+}
+catch (e) {
+  console.assert(e.message.includes('digit'));
+}
+
+console.log('-- ignore chars out of base with safe option');
+const x = conv('9a99', 10, 62, true);
+console.assert(x === conv('999', 10, 62))
 
 conv.setCharset('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_')
 console.assert(conv('999', 10, 64) == 'fD');
