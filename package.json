@@ -1,9 +1,9 @@
 {
   "name": "base-conv",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Convert arbitrarily big numbers from any radix representation to any other",
   "main": "index.js",
-  "module": "index.js",
+  "module": "index.mjs",
   "scripts": {
     "test": "nyc node test",
     "prepare": "rollup -c",
