@@ -19,7 +19,7 @@ setCharset(CHARSET);
  * @returns {String}
  */
 const convert = (_str = '', src_base = 10, dst_base = CHARSET.length, safe) => {
-  if (dst_base > CHARSET.length) throw new Error(`src or dst radix exceeds current charset length (${CHARSET.length})`);
+  if (dst_base > CHARSET.length) throw new Error(`dst radix exceeds current charset length (${CHARSET.length})`);
 
   const res = [];
   const str = _str + '';
