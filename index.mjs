@@ -1,4 +1,4 @@
-let CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_';
 let CHARSET_MAP; // char => position map, to avoid calling indexOf
 
 const setCharset = charset => {

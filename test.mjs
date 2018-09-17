@@ -13,7 +13,7 @@ console.assert(conv('g7', 62, 10) == '999');
 
 console.log('-- throw if dest base > CHARSET.length');
 try {
-  conv('999', 10, 64);
+  conv('999', 10, 65);
   console.assert(false)
 }
 catch (e) {
@@ -41,5 +41,8 @@ const s1 = 'lolthismustbeahugenumber';
 const s2 = conv(s1, 36, 10);
 console.assert(!Number.isSafeInteger(s2));
 console.assert(conv(s2, 10, 36), s1);
+
+const num = Math.floor(Number.MAX_SAFE_INTEGER * Math.random());
+console.assert(num.toString(36), conv(num, 10, 36));
 
 console.log('OK');
