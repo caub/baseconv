@@ -1,12 +1,10 @@
 {
   "name": "base-conv",
-  "version": "1.3.0",
-  "description": "Convert arbitrarily big numbers from any radix representation to any other",
+  "version": "2.0.0",
+  "description": "Convert arbitrarily large numbers from any radix representation to any other",
   "main": "index.js",
-  "module": "index.mjs",
   "scripts": {
     "test": "nyc node test",
-    "prepare": "rollup -c",
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "repository": "github:caub/base-conv",
@@ -22,19 +20,8 @@
     "url": "https://github.com/caub/base-conv/issues"
   },
   "homepage": "https://github.com/caub/base-conv#readme",
-  "nyc": {
-    "extension": [
-      ".mjs"
-    ],
-    "require": [
-      "@std/esm"
-    ],
-    "check-coverage": true
-  },
   "devDependencies": {
-    "@std/esm": "^0.26.0",
-    "codecov": "^3.1.0",
-    "nyc": "^13.0.1",
-    "rollup": "^0.66.0"
+    "codecov": "^3.2.0",
+    "nyc": "^13.3.0"
   }
 }

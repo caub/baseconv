@@ -1,4 +1,6 @@
-import conv from './index';
+const BaseConv = require('.');
+
+const conv = BaseConv();
 
 console.assert(conv('999', 10, 10) == '999');
 
@@ -20,29 +22,20 @@ catch (e) {
   console.assert(e.message.includes('radix'));
 }
 
-console.log('-- throw if an input char is out of src base');
-try {
-  const x = conv('9a99', 10);
-  console.assert(false)
-}
-catch (e) {
-  console.assert(e.message.includes('digit'));
-}
-
-console.log('-- ignore chars out of base with safe option');
-const x = conv('9a99', 10, 62, true);
+console.log('-- ignore chars out of input base');
+const x = conv('9a99', 10, 62);
 console.assert(x === conv('999', 10, 62))
 
-conv.setCharset('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_')
-console.assert(conv('999', 10, 64) == 'fD');
-console.assert(conv('fD', 64, 10) == '999');
+const conv2 = BaseConv('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_');
+console.assert(conv2('999', 10, 64) == 'fD');
+console.assert(conv2('fD', 64, 10) == '999');
 
 const s1 = 'lolthismustbeahugenumber';
-const s2 = conv(s1, 36, 10);
+const s2 = conv2(s1, 36, 10);
 console.assert(!Number.isSafeInteger(s2));
-console.assert(conv(s2, 10, 36), s1);
+console.assert(conv2(s2, 10, 36), s1);
 
 const num = Math.floor(Number.MAX_SAFE_INTEGER * Math.random());
-console.assert(num.toString(36), conv(num, 10, 36));
+console.assert(num.toString(36), conv2(num, 10, 36));
 
 console.log('OK');

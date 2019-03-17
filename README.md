@@ -5,12 +5,12 @@
 [![coverage status][codecov-image]][codecov-url]
 
 - default charset is `'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'`
-- you can change it with `conv.setCharset`
+- you can change it by passing a chartset to the `BaseConv` exported function
 - no IEEE-754 limitation
 
 usage:
 ```js
-const conv = require('base-conv')
+const conv = require('base-conv')();
 conv(42, 10, 16) // '2a'
 conv('42', 10, 16) // '2a'
 conv('42'.repeat(100), 10, 16) // '8de2991df40ff783057818d0012f3bc1c...'
