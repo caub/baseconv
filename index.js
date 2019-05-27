@@ -1,22 +1,24 @@
-const DEFAULT_CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_';
+const DEFAULT_ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_';
 
 // inspired from https://codegolf.stackexchange.com/questions/1620/arbitrary-base-conversion/21672#21672
 
 /**
  * Convert a string or number from srcRadix to dstRadix
- * @param {string?} alphabet
+ * @param {string} [inputAlphabet=DEFAULT_ALPHABET] alphabet of the input string
+ * @param {string} [outputAlphabet=DEFAULT_ALPHABET] alphabet to buse for the output string
  * @returns {(input: string | number, inputBase?: number, outputBase?: number) => string}
  */
-function BaseConv(charset = DEFAULT_CHARSET) {
-  const charsetMap = new Map(Array.from(charset, (s, i) => [s, i])); // char => position map, to avoid calling a O(n) indexOf
+function BaseConv(inputAlphabet = DEFAULT_ALPHABET, outputAlphabet = inputAlphabet) {
+  // char => position map, to avoid calling a O(n) indexOf
+  const inputAlphabetMap = new Map(Array.from(inputAlphabet, (s, i) => [s, i]));
 
-  return (_str = '', inputBase = 10, outputBase = charset.length) => {
-    if (outputBase > charset.length) throw new Error(`dst radix exceeds current charset length (${charset.length})`);
+  return (_str = '', inputBase = 10, outputBase = outputAlphabet.length) => {
+    if (outputBase > outputAlphabet.length) throw new Error(`Output radix exceeds the output alphabet length (${outputAlphabet.length})`);
 
     const res = [];
     const str = _str + '';
     const s = inputBase <= 36 ? str.toLowerCase() : str;
-    let nums = Array.from(s, x => charsetMap.get(x));
+    let nums = Array.from(s, x => inputAlphabetMap.get(x));
 
     while (nums.length) {
       // divide successive powers of outputBase
@@ -40,7 +42,7 @@ function BaseConv(charset = DEFAULT_CHARSET) {
     }
 
     return res.reverse()
-      .map(x => charset[x])
+      .map(x => outputAlphabet[x])
       .join('');
   };
 }

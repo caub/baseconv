@@ -4,8 +4,8 @@
 [![build status][travis-image]][travis-url]
 [![coverage status][codecov-image]][codecov-url]
 
-- default charset is `'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'`
-- you can change it by passing a chartset to the `BaseConv` exported function
+- default alphabet is `'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'` for input and output
+- you can change it by passing different alphabets to the `BaseConv` exported function
 - no IEEE-754 limitation
 
 usage:
