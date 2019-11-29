@@ -4,16 +4,16 @@ const DEFAULT_ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQR
 
 /**
  * Convert a string or number from srcRadix to dstRadix
- * @param {string} [inputAlphabet=DEFAULT_ALPHABET] alphabet of the input string
+ * @param {string} [inputAlphabet='0123456789abcdef'] alphabet of the input string
  * @param {string} [outputAlphabet=DEFAULT_ALPHABET] alphabet to buse for the output string
  * @returns {(input: string | number, inputBase?: number, outputBase?: number) => string}
  */
-function BaseConv(inputAlphabet = DEFAULT_ALPHABET, outputAlphabet = inputAlphabet) {
+module.exports = function BaseConv(_str = '', inputAlphabet = '0123456789abcdef', outputAlphabet = DEFAULT_ALPHABET) {
   // char => position map, to avoid calling a O(n) indexOf
   const inputAlphabetMap = new Map(Array.from(inputAlphabet, (s, i) => [s, i]));
 
-  return (_str = '', inputBase = 10, outputBase = outputAlphabet.length) => {
-    if (outputBase > outputAlphabet.length) throw new Error(`Output radix exceeds the output alphabet length (${outputAlphabet.length})`);
+  return (_str = '', inputBase = inputAlphabet.length, outputBase = outputAlphabet.length) => {
+    if (outputBase > outputAlphabet.length) throw new Error(`Output radix exceeds the outputAlphabet length (${outputAlphabet.length})`);
 
     const res = [];
     const str = _str + '';
@@ -46,5 +46,3 @@ function BaseConv(inputAlphabet = DEFAULT_ALPHABET, outputAlphabet = inputAlphab
       .join('');
   };
 }
-
-module.exports = BaseConv;
