@@ -1,6 +1,6 @@
 {
   "name": "base-conv",
-  "version": "3.0.0-1",
+  "version": "3.0.0",
   "description": "Convert arbitrarily large numbers from any radix representation to any other",
   "main": "index.js",
   "scripts": {

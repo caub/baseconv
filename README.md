@@ -10,7 +10,7 @@
 
 usage:
 ```js
-const conv = require('base-conv')();
+const conv = require('base-conv').default;
 conv(42, 10, 16) // '2a'
 conv('42', 10, 16) // '2a'
 conv('42'.repeat(100), 10, 16) // '8de2991df40ff783057818d0012f3bc1c...'
